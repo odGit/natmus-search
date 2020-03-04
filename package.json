@@ -1,14 +1,28 @@
 {
   "name": "natmus-challenge",
   "version": "0.1.0",
+  "description": "Solution to NatMus challenge",
+  "main": "index.js",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/odGit/natmus-search.git"
+  },
+  "author": "Olga Dmitricenko",
+  "license": "AGPL-3.0-only",
+  "standard": {
+    "ignore": [
+      "dist/*"
+    ]
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
-    "react-scripts": "3.4.0"
+    "react-scripts": "3.4.0",
+    "semistandard": "^14.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
