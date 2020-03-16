@@ -8,11 +8,11 @@ type CollectionProps= {
 
 function ResultCollection ({resultData}: CollectionProps) {
   return (
-    <>{
+    <div className="item-collection">{
       resultData.map((item: Data, index: number) => (
-        <Card item={item} i={index} />
+        <Card classes={"card"} item={item} key={`item-${index}`} i={index} />
       ))
-    }</>
+    }</div>
   )
 
 }

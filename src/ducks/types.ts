@@ -19,25 +19,23 @@ export interface Data {
   }[]; 
 };
 
-
-// export interface ResultsState {
-//   results: Data[];
-// };
-
 export interface AppState {
   data: Data[];
   limit: number;
   offsetSize: number;
   awaitingData: boolean;
   errorMessage: string | null;
-  total: number;
   showSpinner: boolean;
+  totalPages: number;
+  totalItems: number;
 };
 
 interface GotSearchResAction {
   type: typeof GET_SEARCH_SUCCESS;
   isLoading: boolean;
   payload: Data[];
+  totalItems: number;
+  totalPages: number;
 };
 
 interface StartSearchAction {
@@ -53,6 +51,7 @@ interface EmptySearchAction {
 interface FailSearchAction {
   type: typeof GET_SEARCH_FAIL;
   isLoading: boolean;
+  error: Error;
 };
 
 export type SearchActionTypes = GotSearchResAction | StartSearchAction | FailSearchAction | EmptySearchAction;

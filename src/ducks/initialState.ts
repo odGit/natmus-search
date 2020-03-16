@@ -6,6 +6,8 @@ export const initialState: AppState = {
   offsetSize: 0,
   awaitingData: false,
   errorMessage: null,
-  total: 0,
+  // total: 0,
+  totalPages: 0,
+  totalItems: 0,
   showSpinner: false,
 };

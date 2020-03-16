@@ -1,0 +1,40 @@
+$color-A: #09e485;
+$color-B: #0291e3;
+$steps: 20;
+
+@mixin anim($i){
+  $y: ($steps) * 5;
+  @keyframes right-#{$i} {
+    0% { transform: translateY(#{-$y}px);}
+    100% { transform: translateY(#{$y}px); }
+  }
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  overflow: hidden;
+}
+
+ul {
+  display: flex;
+  li {
+    width: 20px;
+    height: 20px;
+    margin: 10px;
+    border-radius: 5px;
+    list-style-type: none;
+    transition: 1s all ease;
+  }
+  
+  @for $i from 1 through $steps {
+    li:nth-child(#{$i}) {
+      @include anim($i);
+      animation: right-#{$i} 1s infinite alternate;
+      background-color: mix($color-A, $color-B, percentage($i / ($steps)));
+      animation-delay: 100ms * $i;  
+    }
+  }
+}

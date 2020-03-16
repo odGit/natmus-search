@@ -7,10 +7,12 @@ export const startSearchReq = (loadingData: boolean): SearchActionTypes => ({
   isLoading: loadingData
 });
 
-export const gotSearchRes = (newData: Data[], loadingData: boolean): SearchActionTypes => ({
+export const gotSearchRes = (newData: Data[], loadingData: boolean, total:number, pages:number): SearchActionTypes => ({
   type: GET_SEARCH_SUCCESS,
   payload: newData,
-  isLoading: loadingData
+  isLoading: loadingData,
+  totalItems: total,
+  totalPages: pages,
 });
 
 export const noSearchRes = (loadingData: boolean): SearchActionTypes => ({
@@ -18,9 +20,10 @@ export const noSearchRes = (loadingData: boolean): SearchActionTypes => ({
   isLoading: loadingData
 });
 
-export const failSearchReq = (loadingData: boolean): SearchActionTypes => ({
+export const failSearchReq = (loadingData: boolean, error:Error): SearchActionTypes => ({
   type: GET_SEARCH_FAIL,
-  isLoading: loadingData
+  isLoading: loadingData,
+  error: error,
 });
 
 // GET DATA from IMG API
