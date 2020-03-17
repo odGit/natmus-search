@@ -1,26 +1,16 @@
-$font-stack:    Helvetica, sans-serif;
-$primary-color: #333;
-$img-color: #719ECE;
-$debug-color: #FF6961;
-$GRASS: #3CB84D;
-$ORANGE: #FAAE03;
-$GREYBLUE: #719ECE;
-$LIGHTGREY: #D3D3D3;
-$DARKGREY: #777777;
-$GREY: #939393;
-$ERROR: #FF6961;
-$TRANSPARENT: #F1F1F1CC;
+@import '../variables';
 
 .card {
   justify-content: center;
   align-items: center;
   background-color: #fff;
-  width: 250px;
+  // width: 250px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   overflow: hidden;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-  margin: 30px auto;
+  margin: 0;
+  padding: 10px;
 }
 
 .card-illustration{
@@ -50,26 +40,20 @@ $TRANSPARENT: #F1F1F1CC;
 .card-title {
   font-family: $font-stack;
   font-size: large;
-  color: green($color: #000000);
+  color: $main-color;
+  margin: 10px 5px;
+  font-weight: bold;
+  // padding: 20px;
 }
 
 .card-item-ids {
-  background-color: magenta;
-  max-height: 15%;
-  margin: 2%;
   height: 2em;
+  margin: 0 3%;
 }
+
+.card-ids{
+  display: flex;
+} 
 
 .left{ float: left; }
 .right{ float: right;}
-
-.card-description{
-  font-family: $font-stack;
-  color: green($color: #000000);
-  padding: 5% 0;
-  margin: 5% 0;
-  width: 100%;
-  display: block;
-  background:$ORANGE;
-}
-

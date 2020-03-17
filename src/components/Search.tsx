@@ -1,4 +1,4 @@
-import React, {useRef, useEffect, useState} from 'react'
+import React, {useRef, useEffect} from 'react'
 import { useCtx } from '../Context';
 import { ICONS } from '../enums/icons-svg';
 import '../sass/components/Search.scss';
@@ -48,7 +48,7 @@ function Search(){
         />
         <IconButton
           onClickFn={searchOnClick}  
-          disabled={false} 
+          isDisabled={false} 
           icon={ICONS.SEARCH} 
           icon_size={'2em'} 
           classes='search-svg'

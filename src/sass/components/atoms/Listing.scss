@@ -1,0 +1,23 @@
+.listing-container {
+  border-bottom: 1px solid #2564c9;
+  font-family: Source Sans Pro, sans-serif;
+  position: relative;
+  display: block;
+  flex-direction: column;
+  padding: 0.5rem 0.25rem;;
+  margin-bottom: 0.5rem;
+}
+
+.listing-name {
+  font-size: 11pt;
+  padding-right: 2%
+}
+
+.listing-value {
+  // background: #2564c9;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+

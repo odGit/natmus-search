@@ -8,20 +8,20 @@ type IconButtonProps = {
   icon: string,
   icon_size: string;
   classes : string;
-  disabled: boolean;
+  isDisabled: boolean;
   onClickFn: (React.MouseEventHandler<HTMLElement> );
   type?: "button" | "submit" | "reset" | undefined;
 }
 
 function IconButton ({
   icon, onClickFn,
-  icon_size, disabled,
+  icon_size, isDisabled,
   classes, type 
 }: IconButtonProps): React.ReactElement {
   return (
     <Button
       onClickFn={onClickFn}
-      disabled={disabled}
+      isDisabled={isDisabled}
       type={type}
       classes={`icon-button ${classes}`}
     >

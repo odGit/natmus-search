@@ -1,4 +1,6 @@
 import React, { ReactElement } from 'react';
+import Listing from '../atoms/Listing';
+import { LABELSTEXT } from '../../enums/label-text';
 
 type measurements = {
   type: string; 
@@ -20,24 +22,27 @@ function Measurements({measurements}: MeasurementsProps): ReactElement {
 
   return(
     <div className={"measurements-wrapper"}>
-      <h2>Measurements:</h2>
       { hasMeasurements ? (
-        measurements.map((item, index) => (
-          (Object.keys(item) as Array<keyof typeof item>).map((key, i) => {
-          return <i key={`measurements-${index}-${key}-${i}`}>{`${item[key]} `}</i>
-          })
-        ))
+        <div className={'listing-container measurements-item'} >
+          <span className='listing-name'>{LABELSTEXT.MEASURE.toUpperCase()}</span>
+          { measurements.map((item, index) => (
+              <span className='listing-value'>{
+                (Object.keys(item) as Array<keyof typeof item>).map((key, i) => {
+                  return <i key={`measurements-${index}-${key}-${i}`}>{`${item[key]} `}</i>
+                })
+              }</span>
+            ))
+          }
+        </div>
       ) : (
-        <span key={`material-color`}>No information</span>
+        <Listing
+          classes={'measurements-item'}
+          name={LABELSTEXT.MEASURE} 
+          value={LABELSTEXT.NO_DATA}
+        />
       )}
     </div>
   )
 };
 
 export default Measurements;
-
-function uniqList(arrayObj:{[key: string]: string }[], key:string): string[]{
-  const list = arrayObj.filter((obj) => obj[key]).map((item) => item[key]);
-  const uniqList = list.filter((val, index) => list.indexOf(val) === index);
-  return uniqList
-};

@@ -1,4 +1,6 @@
 import React, { ReactElement } from 'react';
+import Listing from '../atoms/Listing';
+import {LABELSTEXT} from '../../enums/label-text';
 
 type material = {
   type: string ; 
@@ -23,15 +25,14 @@ function Materials({materials}: MaterialsProps): ReactElement {
 
   return(
     <div className={"materials-wrapper"}>
-      <h2>Materials:</h2>
       {hasMaterials ? (
         <div>
-          {typeList.length!==0 && <span key={`material-type`}>{`materials: ${typeList}`}</span>}
-          {colorList.length!==0 && <span key={`material-color`}>{`color: ${colorList}`}</span>}
-          {procList.length!==0 && <span key={`material-processing`}>{`processing: ${procList}`}</span>}
+          {typeList.length!==0 && <Listing classes={'material-type'} name={LABELSTEXT.MATERIAL} value={typeList} />}
+          {colorList.length!==0 && <Listing classes={'material-color'} name={LABELSTEXT.COLOR} value={colorList} />}
+          {procList.length!==0 && <Listing classes={'material-processing'} name={LABELSTEXT.PROCESS} value={procList} />}
         </div>
       ) :(
-        <span key={`material-color`}>No Info</span>
+        <Listing classes={'material-type'} name={LABELSTEXT.MATERIAL} value={LABELSTEXT.NO_DATA}/>
       ) 
     }
     </div>

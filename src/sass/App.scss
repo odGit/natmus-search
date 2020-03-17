@@ -1,18 +1,7 @@
 @import "./elements";
-@import "./variables";
+// @import "./variables";
 
 .container {
   width: 100%;
   height: auto;
-}
-
-.item-search {
-  width: 100%;
-}
-.item-collection {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 250px);
-  grid-gap: 1%;
-  justify-content: center;
-  align-items: center;
 }

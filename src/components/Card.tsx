@@ -9,6 +9,7 @@ import { Data } from '../ducks/types';
 
 import '../sass/components/Card.scss';
 import Measurements from './card/Measurements';
+import Description from './card/Description';
 
 type CardProps = {
   item: Data;
@@ -29,9 +30,9 @@ function Card ({item, i, classes}: CardProps): React.ReactElement {
   <div className={`card ${classes}`}>
     <Illustration item={id} img_src={images} classes={"card-illustration"} />
     <Collection collection={collection} classes={"card-collection"}/>
-    <Label label={title ? title.toLocaleUpperCase(): 'NONE'} classes={"card-title"} />
+    <Label label={title ? title.toLocaleUpperCase(): 'No Title'} classes={"card-title"} />
     <ItemIDs id_label={id.toString()} ident_label={identification}/>
-    {descriptions === null ? <span className="card-description">Description missing.</span> : <span className="card-description">{descriptions}</span>}
+    <Description descriptions={descriptions} />
     <Materials materials={materials}/>
     <Measurements measurements={measurements} />
   </div>

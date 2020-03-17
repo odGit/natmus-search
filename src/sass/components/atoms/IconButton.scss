@@ -9,11 +9,9 @@
   color: $primary-light;
   display: flex;
   transition: transform .3s;
+  margin: auto 0;
   &:hover {
     transform: scale(1.09);
-    // color: white;
-    // border-width: 2px;
-    // background-color: BLUE;
     cursor: pointer;
   };
   &:disabled {

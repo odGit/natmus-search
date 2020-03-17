@@ -1,0 +1,8 @@
+export enum LABELSTEXT {
+  'NO_DATA' = 'No information',
+  'DESCRIPTION'= 'DESCRIPTION:',
+  'COLOR' = 'COLORS:',
+  'PROCESS' = 'PROCESSING:',
+  'MEASURE' = 'MEASUREMENTS:',
+  'MATERIAL' = 'MATERIALS:'
+};
