@@ -7,18 +7,15 @@ import { useCtx } from './Context';
 import './sass/App.scss';
 import NoResults from './components/NoResults';
 import ControlsBar from './components/ControlsBar';
-import {fetchSearchApi} from './utils/searchItems';
- 
+import { useReflectInUrl } from './utils/useReflectInUrl';
+import useSearch from './utils/useSearch';
 
 function App(): ReactElement {
   const {state, dispatch} = useCtx();
   const { offsetSize, limit, queryTerm } = state;
 
-  useEffect(()=> {
-    if(queryTerm !== null){
-      fetchSearchApi(queryTerm, limit, offsetSize, dispatch);
-    }
-  },[offsetSize, limit, queryTerm])
+  useSearch(offsetSize, queryTerm, limit, dispatch);
+  useReflectInUrl(offsetSize, queryTerm);
 
   return (
     <div className="App container">

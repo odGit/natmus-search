@@ -20,9 +20,8 @@ function Measurements({measurements, id}: MeasurementsProps): ReactElement {
         <div className={'listing-container measurements-item'} >
           <span className='listing-name'>{LABELSTEXT.MEASURE.toUpperCase()}</span>
           { measurements.map((item, index) => (
-              <span className='listing-value'>{
+              <span className='listing-value' key={`value-${id}-${index}`}>{
                 (Object.keys(item) as Array<keyof typeof item>).map((key, i) => {
-                  console.log('KEY', `measurements-${id}-${index}-${key}-${i}`);
                   return <i key={`measurements-${id}-${index}-${key}-${i}`}>{`${item[key]} `}</i>
                 })
               }</span>

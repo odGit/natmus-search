@@ -10,11 +10,15 @@ function Search(){
   const inputRef = useRef<HTMLInputElement>(null);
   const {state, dispatch} = useCtx();
 
-  
+  useEffect(() => {
+    if(inputRef.current !== null && state.queryTerm !== null){
+      inputRef.current.value = state.queryTerm
+    }
+  })
+
   function searchOnClick (): void {
     if (null !== inputRef.current) {
       const searchKey = inputRef.current.value;
-      console.log('searc', searchKey.length);
       if (searchKey.length !== 0) {
         dispatch(setQuery(searchKey));
       }

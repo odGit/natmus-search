@@ -1,4 +1,6 @@
 import {AppState} from './types';
+import {getInitialQuery} from '../utils/getInitialUrlParams';
+
 
 export const initialState: AppState = {
   data: [],
@@ -10,6 +12,6 @@ export const initialState: AppState = {
   totalItems: 0,
   showSpinner: false,
   showNoRes: false,
-  queryTerm: null,
+  queryTerm: getInitialQuery(),
   files: null,
 };
