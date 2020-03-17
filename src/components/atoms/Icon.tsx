@@ -8,7 +8,7 @@ type IconProps = {
 
 const iconStyle = {
   display: 'inline-block',
-  verticalAlign: 'middle',
+  alignSelf: 'center'
 };
 
 function Icon({icon, color='none', size}: IconProps){

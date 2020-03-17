@@ -1,4 +1,4 @@
-import { GET_SEARCH_SUCCESS, GET_SEARCH_START_REQUEST, GET_SEARCH_NO_ITEMS, GET_SEARCH_FAIL } from "./actionTypes";
+import { GET_SEARCH_SUCCESS, GET_SEARCH_START_REQUEST, GET_SEARCH_NO_ITEMS, GET_SEARCH_FAIL, GET_IMG_START_REQUEST, GET_IMG_SUCCESS, GET_IMG_FAIL, CHANGE_PAGE, SET_QUERY } from "./actionTypes";
 
 export interface Data { 
   id: number; 
@@ -6,16 +6,16 @@ export interface Data {
   identification: string; 
   title: string; 
   descriptions: string[]; 
-  images: string[]; 
+  images: string[];
   materials: { 
     type: string; 
-    color: string | null; 
-    processing: string | null; 
+    color: string; 
+    processing: string; 
   }[]; 
   measurements: { 
-    type: string|null; 
-    value: number|null; 
-    unit: string|null; 
+    type: string; 
+    value: number; 
+    unit: string; 
   }[]; 
 };
 
@@ -26,8 +26,12 @@ export interface AppState {
   awaitingData: boolean;
   errorMessage: string | null;
   showSpinner: boolean;
-  totalPages: number;
+  showNoRes: boolean;
+  perPage: number;
   totalItems: number;
+  queryTerm: string | null;
+  // files:{[key: number] : {[key: string]: Blob} } | null;
+  files: Blob | null;
 };
 
 interface GotSearchResAction {
@@ -35,7 +39,8 @@ interface GotSearchResAction {
   isLoading: boolean;
   payload: Data[];
   totalItems: number;
-  totalPages: number;
+  perPage: number;
+  query: string;
 };
 
 interface StartSearchAction {
@@ -46,6 +51,7 @@ interface StartSearchAction {
 interface EmptySearchAction {
   type: typeof GET_SEARCH_NO_ITEMS;
   isLoading: boolean;
+  queryTerm: string;
 };
 
 interface FailSearchAction {
@@ -54,6 +60,41 @@ interface FailSearchAction {
   error: Error;
 };
 
-export type SearchActionTypes = GotSearchResAction | StartSearchAction | FailSearchAction | EmptySearchAction;
+// IMAGES ACTIONS TYPES
+interface StartImageAction {
+  type: typeof GET_IMG_START_REQUEST;
+  isLoading: boolean;
+  itemId: number;
+  imgId: string;
+};
 
-export type AppActionTypes = SearchActionTypes;
+interface GotImageAction {
+  type: typeof GET_IMG_SUCCESS;
+  isLoading: false;
+  itemId: number;
+  imgId: string;
+  img: Blob;
+};
+
+interface FailImageAction {
+  type: typeof GET_IMG_FAIL;
+  isLoading: boolean;
+  itemId: number;
+  imgId: string;
+  error: Error;
+};
+
+interface ChangePageAction {
+  type: typeof CHANGE_PAGE;
+  nextPage: number;
+}
+
+export type QueryAction = {
+  type: typeof SET_QUERY;
+  queryTerm: string;
+}
+
+export type SearchActionTypes = GotSearchResAction | StartSearchAction | FailSearchAction | EmptySearchAction;
+export type ImageActionTypes = StartImageAction | GotImageAction | FailImageAction;
+export type PageActionTypes = ChangePageAction ;
+export type AppActionTypes = SearchActionTypes | ImageActionTypes | PageActionTypes | QueryAction;

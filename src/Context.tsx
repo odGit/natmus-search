@@ -15,7 +15,6 @@ const ctx = createContext<StoreApi>({
 
 function StateProvider(props: React.PropsWithChildren<{}>) {
   const [state, dispatch] = useReducer<React.Reducer<AppState, AppActionTypes>>(reducer, initialState);
-  // const [state, dispatch] = useReducer(reducer, initialState);
   return <ctx.Provider value={{state, dispatch}} {...props} />
 }
 

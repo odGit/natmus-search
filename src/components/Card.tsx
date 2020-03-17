@@ -1,12 +1,14 @@
 import React from 'react';
-import Illustration from './Card/Illustration';
-import Collection from './Card/Collection';
+import Illustration from './card/Illustration';
+import Collection from './card/Collection';
 import Label from './atoms/Label';
+import Materials from './card/Materials';
 
-import ItemIDs from './Card/ItemIDs'
+import ItemIDs from './card/ItemIDs'
 import { Data } from '../ducks/types';
 
 import '../sass/components/Card.scss';
+import Measurements from './card/Measurements';
 
 type CardProps = {
   item: Data;
@@ -20,27 +22,18 @@ function Card ({item, i, classes}: CardProps): React.ReactElement {
     identification, title,
     descriptions,
     images,
-    // materials, measurements
+    materials, measurements
   } = item;
 
-  // images: string[]; 
-  // materials: { 
-  //   type: string; 
-  //   color: string | null; 
-  //   processing: string | null; 
-  // }[]; 
-  // measurements: { 
-  //   type: string|null; 
-  //   value: number|null; 
-  //   unit: string|null; 
-  // }[]; 
   return (
   <div className={`card ${classes}`}>
-    <Illustration classes={"card-illustration"} />
+    <Illustration item={id} img_src={images} classes={"card-illustration"} />
     <Collection collection={collection} classes={"card-collection"}/>
     <Label label={title ? title.toLocaleUpperCase(): 'NONE'} classes={"card-title"} />
     <ItemIDs id_label={id.toString()} ident_label={identification}/>
-    <span className="card-description">{descriptions}</span>
+    {descriptions === null ? <span className="card-description">Description missing.</span> : <span className="card-description">{descriptions}</span>}
+    <Materials materials={materials}/>
+    <Measurements measurements={measurements} />
   </div>
   );
 }

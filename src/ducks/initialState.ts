@@ -2,12 +2,14 @@ import {AppState} from './types';
 
 export const initialState: AppState = {
   data: [],
-  limit: 20,
+  limit: 50,
   offsetSize: 0,
   awaitingData: false,
   errorMessage: null,
-  // total: 0,
-  totalPages: 0,
+  perPage: 0,
   totalItems: 0,
   showSpinner: false,
+  showNoRes: false,
+  queryTerm: null,
+  files: null,
 };

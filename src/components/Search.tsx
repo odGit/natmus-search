@@ -1,39 +1,22 @@
-import React, {useRef, useEffect} from 'react'
+import React, {useRef, useEffect, useState} from 'react'
 import { useCtx } from '../Context';
-// import { gotSearchRes, startSearchReq } from '../ducks/actions';
 import { ICONS } from '../enums/icons-svg';
-import '../sass/components/SearchForm.scss';
+import '../sass/components/Search.scss';
 import IconButton from './atoms/IconButton';
-
-import {fetchSearchApi} from '../utils/searchItems';
-
-// async function getReq(query: RequestInfo): Promise<any> {
-//   const URL = `https://frontend.natmus.dk/api/Search?query=${query}&size=30`;
-//   const response = await fetch(URL, {
-//     method: 'get',
-//     headers: new Headers({'Content-Type': 'application/json'}) /** Use Content-type as your requirement undifined OR application/json**/
-//   });
+import { setQuery } from '../ducks/actions';
 
 
-//   const body = await response.json();
-//   // Header
-//   // Natmus-Page-Count :100,
-//   // Natmus-Total-Count: 959	
-
-//   return body;
-// }
-
-function SearchForm(){
+function Search(){
   const inputRef = useRef<HTMLInputElement>(null);
   const {state, dispatch} = useCtx();
+
   
   function searchOnClick (): void {
     if (null !== inputRef.current) {
       const searchKey = inputRef.current.value;
+      console.log('searc', searchKey.length);
       if (searchKey.length !== 0) {
-        // dispatch(startSearchReq(true));
-        // getReq(searchKey).then(resp => dispatch(gotSearchRes(resp, false)));
-        fetchSearchApi(searchKey, state.limit, state.offsetSize, dispatch);
+        dispatch(setQuery(searchKey));
       }
     }
   };
@@ -75,4 +58,4 @@ function SearchForm(){
   );
 }
 
-export default SearchForm;
+export default Search;

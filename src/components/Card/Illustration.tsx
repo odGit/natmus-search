@@ -1,17 +1,31 @@
 import React, { ReactElement } from 'react';
-import Icon from '../atoms/Icon';
+// import Icon from '../atoms/Icon';
 import{ICONS} from '../../enums/icons-svg';
+import IconButton from '../atoms/IconButton';
+import {fetchImageApi} from '../../utils/getImage';
+import { useCtx } from '../../Context';
 
 type IllustrationProps = {
-  img_src?: string;
+  img_src: string[];
   img_alt?: string;
   classes: string;
+  item: number;
 }
 
-function Illustration({img_alt, img_src, classes}: IllustrationProps): ReactElement{
+function Illustration({ item, img_alt, img_src, classes}: IllustrationProps): ReactElement{
+  const hasImages = img_src.length !== 0;
+  const {state, dispatch} = useCtx();
+
   return (
     <div className={classes}>
-      {img_src ? <img src={img_src} alt={img_alt} /> : <Icon icon={ICONS.IMAGE} size={'3em'} color={'#719ECE'}/> }
+      {state.files && !hasImages && <img src={URL.createObjectURL(state.files)} alt={img_alt} /> }
+      <IconButton
+        classes={'illustration icon-button'} 
+        icon={ICONS.IMAGE} 
+        disabled={!hasImages}
+        icon_size={'3em'}
+        onClickFn={() => fetchImageApi(img_src[0], item, dispatch)}
+      />
     </div>
   );
 }

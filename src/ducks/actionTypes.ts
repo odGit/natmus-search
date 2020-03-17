@@ -9,5 +9,7 @@ export const GET_IMG_FAIL= 'GET_IMG_FAIL';
 export const GET_IMG_NO_ITEMS= 'GOT_NO_IMG';
 
 
-export const CHANGE_PAGE: string = 'CHANGE_PAGE';
-export const CHANGE_LIMIT: string = 'CHANGE_LIMIT';
+export const CHANGE_PAGE= 'CHANGE_PAGE';
+export const CHANGE_LIMIT= 'CHANGE_LIMIT';
+
+export const SET_QUERY = 'SET_QUERY';

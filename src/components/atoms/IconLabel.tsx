@@ -12,7 +12,7 @@ type IconLabelProps = {
 function IconLabel ({ classes, icon, label}: IconLabelProps): ReactElement {
   return (
     <div className={`icon-label ${classes}`} >
-      <Icon icon={icon} size={"1.5em"} color={'none'}/>
+      <Icon icon={icon} size={"1.5em"} />
       <span>
         {label}
       </span>

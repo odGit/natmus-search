@@ -1,4 +1,4 @@
-import React from 'react';
+import {Dispatch} from 'react';
 import {AppActionTypes} from '../ducks/types';
 import { startSearchReq, failSearchReq, noSearchRes, gotSearchRes } from "../ducks/actions";
 
@@ -7,7 +7,7 @@ export async function fetchSearchApi (
   query: string,
   size: number,
   offsetSize: number,
-  dispatch: React.Dispatch<AppActionTypes>,
+  dispatch: Dispatch<AppActionTypes>,
   ): Promise<any> {
   const URL = `https://frontend.natmus.dk/api/Search?query=${query}&size=${size}&offset=${offsetSize}`;
   dispatch(startSearchReq(true));
@@ -27,13 +27,13 @@ export async function fetchSearchApi (
     let pages = Number(request.headers.get('Natmus-Page-Count'));
 
     if(content.length === 0){
-      return dispatch(noSearchRes(false));
+      return dispatch(noSearchRes(false, query));
     }
     if(content.length > 0) {
-      return dispatch(gotSearchRes(content, false, total, pages));
+      return dispatch(gotSearchRes(content, false, total, pages, query));
     }
-  } catch (err) {
-    return dispatch(failSearchReq(false, err));
+  } catch (error) {
+    return dispatch(failSearchReq(false, error));
   }
 
 };

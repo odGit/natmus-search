@@ -1,8 +1,8 @@
-import { GET_SEARCH_NO_ITEMS, GET_SEARCH_START_REQUEST, GET_SEARCH_SUCCESS } from './actionTypes';
+import { 
+  GET_SEARCH_NO_ITEMS, GET_SEARCH_START_REQUEST, GET_SEARCH_SUCCESS,
+  GET_IMG_SUCCESS, CHANGE_PAGE, SET_QUERY } from './actionTypes';
 import { AppActionTypes, AppState } from './types';
-// import { initialState } from './initialState';
-
-// function reducer (state: AppState = initialState, action: AppActionTypes) {
+ 
 function reducer (state: AppState, action: AppActionTypes): AppState {
   console.log('REDUCER', action)
   switch (action.type) {
@@ -10,6 +10,7 @@ function reducer (state: AppState, action: AppActionTypes): AppState {
       return {
         ...state,
         showSpinner: action.isLoading,
+        showNoRes: false,
         data: [],
       }
     }
@@ -18,14 +19,37 @@ function reducer (state: AppState, action: AppActionTypes): AppState {
         ...state,
         data: action.payload,
         showSpinner: action.isLoading,
+        showNoRes: false,
         totalItems: action.totalItems,
-        totalPages: action.totalPages,
+        perPage: action.perPage,
+        queryTerm: action.query,
       }
     }
     case GET_SEARCH_NO_ITEMS:{
       return {
         ...state,
-        showSpinner: false,
+        showSpinner: action.isLoading,
+        showNoRes: true,
+        queryTerm: action.queryTerm,
+      }
+    }
+    case GET_IMG_SUCCESS:{
+      // const newFiles = Object.assign({})
+      return{
+        ...state,
+        files: action.img,
+      }
+    }
+    case CHANGE_PAGE: {
+      return {
+        ...state,
+        offsetSize: state.offsetSize + (action.nextPage * state.limit)
+      }
+    }
+    case SET_QUERY: {
+      return {
+        ...state,
+        queryTerm: action.queryTerm,
       }
     }
     default: {
