@@ -34,7 +34,7 @@ function Card ({item, i, classes}: CardProps): React.ReactElement {
     <ItemIDs id_label={id.toString()} ident_label={identification}/>
     <Description descriptions={descriptions} />
     <Materials materials={materials}/>
-    <Measurements measurements={measurements} />
+    <Measurements id={id} measurements={measurements} />
   </div>
   );
 }

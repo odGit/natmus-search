@@ -8,7 +8,6 @@ type DescProps = {
 function Description({descriptions}: DescProps): ReactElement{
   const hasDescription = descriptions !== null ? descriptions.length !== 0 : false;
 
-  console.log('deSCRIPTION', descriptions);
   return ( hasDescription ? 
     <Listing classes="card-description" name={LABELSTEXT.DESCRIPTION} value={descriptions?.join(' ')!} />
     : 

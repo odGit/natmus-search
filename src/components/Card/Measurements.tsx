@@ -2,23 +2,17 @@ import React, { ReactElement } from 'react';
 import Listing from '../atoms/Listing';
 import { LABELSTEXT } from '../../enums/label-text';
 
-type measurements = {
-  type: string; 
-  value: number; 
-  unit: string; 
-}[];
-
 type MeasurementsProps = {
   measurements: {
     type: string; 
     value: number; 
     unit: string; 
-  }[]
+  }[],
+  id: number
 }; 
 
-function Measurements({measurements}: MeasurementsProps): ReactElement {
+function Measurements({measurements, id}: MeasurementsProps): ReactElement {
   const hasMeasurements = measurements.length !== 0;
-
 
   return(
     <div className={"measurements-wrapper"}>
@@ -28,7 +22,8 @@ function Measurements({measurements}: MeasurementsProps): ReactElement {
           { measurements.map((item, index) => (
               <span className='listing-value'>{
                 (Object.keys(item) as Array<keyof typeof item>).map((key, i) => {
-                  return <i key={`measurements-${index}-${key}-${i}`}>{`${item[key]} `}</i>
+                  console.log('KEY', `measurements-${id}-${index}-${key}-${i}`);
+                  return <i key={`measurements-${id}-${index}-${key}-${i}`}>{`${item[key]} `}</i>
                 })
               }</span>
             ))
