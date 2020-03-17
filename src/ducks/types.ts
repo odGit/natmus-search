@@ -31,7 +31,8 @@ export interface AppState {
   totalItems: number;
   queryTerm: string | null;
   // files:{[key: number] : {[key: string]: Blob} } | null;
-  files: Blob | null;
+  imgFiles: {[key: string]: Blob};
+  imgAvailable: string[];
 };
 
 interface GotSearchResAction {

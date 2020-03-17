@@ -15,11 +15,9 @@ function Illustration({ item, img_alt, img_src, classes}: IllustrationProps): Re
   const hasImages = img_src.length !== 0;
   const {state, dispatch} = useCtx();
 
-  console.log('HAS images', hasImages);
-
   return (
     <div className={classes}>
-      {state.files && !hasImages && <img src={URL.createObjectURL(state.files)} alt={img_alt} /> }
+      {state.imgAvailable.includes(img_src[0]) && hasImages && <img src={URL.createObjectURL(state.imgFiles[img_src[0]])} alt={img_alt} /> }
       <IconButton
         classes={'illustration icon-button'} 
         icon={ICONS.IMAGE} 

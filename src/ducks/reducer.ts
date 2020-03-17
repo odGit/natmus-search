@@ -34,10 +34,10 @@ function reducer (state: AppState, action: AppActionTypes): AppState {
       }
     }
     case GET_IMG_SUCCESS:{
-      // const newFiles = Object.assign({})
       return{
         ...state,
-        files: action.img,
+        imgFiles: Object.assign({}, state.imgFiles, {[action.imgId] : action.img }),
+        imgAvailable: state.imgAvailable.concat(action.imgId),
       }
     }
     case CHANGE_PAGE: {

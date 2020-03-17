@@ -11,7 +11,7 @@ function Search(){
   const {state, dispatch} = useCtx();
 
   useEffect(() => {
-    if(inputRef.current !== null && state.queryTerm !== null){
+    if(inputRef.current !== null && state.queryTerm !== null && state.queryTerm !== "null"){
       inputRef.current.value = state.queryTerm
     }
   })

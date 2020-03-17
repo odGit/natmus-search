@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect} from 'react';
+import React, { ReactElement} from 'react';
 import SearchForm from './components/Search';
 import ResultCollection from './components/ResultCollection';
 import Loader from './components/atoms/LoadingScreen';

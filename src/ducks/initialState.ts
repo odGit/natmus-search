@@ -13,5 +13,6 @@ export const initialState: AppState = {
   showSpinner: false,
   showNoRes: false,
   queryTerm: getInitialQuery(),
-  files: null,
+  imgFiles: {},
+  imgAvailable: [],
 };

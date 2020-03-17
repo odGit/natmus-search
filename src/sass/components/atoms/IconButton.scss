@@ -11,12 +11,14 @@
   transition: transform .3s;
   margin: auto 0;
   &:hover {
-    transform: scale(1.09);
+    transform: scale(1.06);
     cursor: pointer;
   };
   &:disabled {
     background-color: $disabled-color;
     border-color: $disabled-color;
     color: $disabled-icon;
+    cursor: default;
+    pointer-events: none;       
   };
 };
