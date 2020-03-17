@@ -23,7 +23,7 @@
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-scripts": "3.4.0",
-    "semistandard": "^14.2.0",
+    "tslint": "^6.1.0",
     "typescript": "^3.8.3"
   },
   "scripts": {
@@ -46,5 +46,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "tslint-config-semistandard": "^8.0.1"
   }
 }
