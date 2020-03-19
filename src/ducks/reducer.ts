@@ -4,7 +4,7 @@ import {
 import { AppActionTypes, AppState } from './types';
  
 function reducer (state: AppState, action: AppActionTypes): AppState {
-  console.log('REDUCER', action)
+  // console.log('REDUCER', action)
   switch (action.type) {
     case GET_SEARCH_START_REQUEST: {
       return {
