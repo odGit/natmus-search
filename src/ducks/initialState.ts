@@ -15,4 +15,5 @@ export const initialState: AppState = {
   queryTerm: getInitialQuery(),
   imgFiles: {},
   imgAvailable: [],
+  showError: false,
 };

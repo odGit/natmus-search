@@ -9,6 +9,7 @@ import NoResults from './components/NoResults';
 import ControlsBar from './components/ControlsBar';
 import { useReflectInUrl } from './utils/useReflectInUrl';
 import useSearch from './utils/useSearch';
+import ErrorResults from './components/ErrorResults';
 
 function App(): ReactElement {
   const {state, dispatch} = useCtx();
@@ -24,6 +25,7 @@ function App(): ReactElement {
       {state.showSpinner && <Loader />}
       {state.data && <ResultCollection resultData={state.data}/>}
       {state.showNoRes && <NoResults term={state.queryTerm!} />}
+      {state.showError && <ErrorResults errorAction={() => console.log('Aloha should reload')} errorText={state.errorMessage!} />}
     </div>
   );
 }

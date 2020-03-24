@@ -24,7 +24,7 @@ export interface AppState {
   limit: number;
   offsetSize: number;
   awaitingData: boolean;
-  errorMessage: string | null;
+  errorMessage: Error | null;
   showSpinner: boolean;
   showNoRes: boolean;
   perPage: number;
@@ -33,6 +33,7 @@ export interface AppState {
   // files:{[key: number] : {[key: string]: Blob} } | null;
   imgFiles: {[key: string]: Blob};
   imgAvailable: string[];
+  showError: boolean;
 };
 
 interface GotSearchResAction {
