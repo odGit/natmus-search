@@ -1,8 +1,7 @@
 
 .result-collection {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(252px, 1fr));
-  grid-gap: 0.5%;
-  justify-content: center;
-  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }

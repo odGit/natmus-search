@@ -11,6 +11,7 @@ function reducer (state: AppState, action: AppActionTypes): AppState {
         ...state,
         showSpinner: action.isLoading,
         showNoRes: false,
+        showError: false,
         data: []
       };
     }
@@ -19,7 +20,6 @@ function reducer (state: AppState, action: AppActionTypes): AppState {
         ...state,
         data: action.payload,
         showSpinner: action.isLoading,
-        showNoRes: false,
         totalItems: action.totalItems,
         perPage: action.perPage,
         queryTerm: action.query

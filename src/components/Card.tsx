@@ -29,12 +29,14 @@ function Card ({item, i, classes}: CardProps): React.ReactElement {
   return (
   <div className={`card ${classes}`}>
     <Illustration item={id} img_src={images} classes={"card-illustration"} />
-    <Collection collection={collection} classes={"card-collection"}/>
-    <Label label={title ? title.toLocaleUpperCase(): 'No Title'} classes={"card-title"} />
-    <ItemIDs id_label={id.toString()} ident_label={identification}/>
-    <Description descriptions={descriptions} />
-    <Materials materials={materials}/>
-    <Measurements id={id} measurements={measurements} />
+    <div className='info-section'>
+      <Collection collection={collection} classes={"card-collection"}/>
+      <Label label={title ? title.toLocaleUpperCase(): 'No Title'} classes={"card-title"} />
+      <ItemIDs id_label={id.toString()} ident_label={identification}/>
+      <Description descriptions={descriptions} />
+      <Materials materials={materials}/>
+      <Measurements id={id} measurements={measurements} />
+    </div>
   </div>
   );
 }

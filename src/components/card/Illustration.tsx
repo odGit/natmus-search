@@ -16,8 +16,8 @@ function Illustration({ item, img_alt, img_src, classes}: IllustrationProps): Re
   const {state, dispatch} = useCtx();
 
   return (
-    <div className={classes}>
-      {state.imgAvailable.includes(img_src[0]) && hasImages && <img src={URL.createObjectURL(state.imgFiles[img_src[0]])} alt={img_alt} /> }
+    <>
+    <div className="illustration-button">
       <IconButton
         classes={'illustration icon-button'} 
         icon={ICONS.IMAGE} 
@@ -26,6 +26,10 @@ function Illustration({ item, img_alt, img_src, classes}: IllustrationProps): Re
         onClickFn={() => fetchImageApi(img_src[0], item, dispatch)}
       />
     </div>
+    <div className={classes}>
+      {state.imgAvailable.includes(img_src[0]) && hasImages && <img src={URL.createObjectURL(state.imgFiles[img_src[0]])} alt={img_alt} /> }
+    </div>
+    </>
   );
 }
 
