@@ -1,21 +1,20 @@
-import {Dispatch} from 'react';
-import {AppActionTypes} from '../ducks/types';
+import { Dispatch } from 'react';
+import { AppActionTypes } from '../ducks/types';
 import { startImageReq, failImageReq, gotImage } from '../ducks/actions';
 
 export async function fetchImageApi (
   id: string,
   item: number,
-  dispatch: Dispatch<AppActionTypes>,
+  dispatch: Dispatch<AppActionTypes>
 ): Promise<any> {
   const url = `https://frontend.natmus.dk/api/Image?id=${id}`;
-  // const url = `https://frontend.natmus.dk/api/Image?id=DO-43370`;
 
   dispatch(startImageReq(true, item, id));
 
   try {
     const request = await fetch(url);
-    if (!request.ok){
-      const err = new Error (
+    if (!request.ok) {
+      const err = new Error(
         `IMAGE API req ${request.status}: ${request.statusText}`
       );
       return dispatch(failImageReq(false, item, id, err));
@@ -25,4 +24,4 @@ export async function fetchImageApi (
   } catch (error) {
     return dispatch(failImageReq(false, item, id, error));
   }
-};
+}

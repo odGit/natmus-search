@@ -20,7 +20,7 @@ function StateProvider(props: React.PropsWithChildren<{}>) {
 
 function useCtx() {
   const context = useContext(ctx);
-  if (context === undefined) throw new Error(`No provider for AppContext given`);
+  if (context === undefined) throw new Error('No provider for AppContext given');
   return context;
 }
 

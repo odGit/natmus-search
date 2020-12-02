@@ -1,6 +1,5 @@
-import {AppState} from './types';
-import {getInitialQuery} from '../utils/getInitialUrlParams';
-
+import { AppState } from './types';
+import { getInitialQuery } from '../utils/getInitialUrlParams';
 
 export const initialState: AppState = {
   data: [],
@@ -16,4 +15,5 @@ export const initialState: AppState = {
   imgFiles: {},
   imgAvailable: [],
   showError: false,
+  fetchImages: true
 };
